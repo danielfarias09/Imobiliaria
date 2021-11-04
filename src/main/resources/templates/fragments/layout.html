@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/css/app-main.css}" />
+    <link rel="stylesheet" th:href="@{/css/jquery.dataTables.css}" />
+    <link rel="stylesheet" th:href="@{/css/imobiliaria.css}" />
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.dataTables.js}"></script>
+    <script th:src="@{/js/Chart.min.js}"></script>
+    <script th:src="@{/js/imobiliaria.js}"></script>
+    <meta charset="UTF-8">
+<title>Imobiliária</title>
+</head>
+<body>
+    <header th:fragment="navbar">
+        <nav class="navbar navbar-default">
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="nav-link"
+                        th:href="@{/imoveis/cadastro-imovel/}">Cadastro de Imóveis<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link"
+                        th:href="@{/imoveis/}">Lista de Imóveis</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link"
+                        th:href="@{/imoveis/dashboard/}">Dashboard</a>
+                    </li>
+                </ul>           
+            </div>
+        </nav>
+    </header>
+</body>
+
+</html>

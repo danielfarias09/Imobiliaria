@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout.html :: header">
+<meta charset="utf-8">
+</head>
+
+<body>
+    <tbody class="tbody-border-primary" id="tabela-imoveis" th:fragment="tabela-imoveis">
+        <tr th:each="imovel : ${imoveis}">
+            <td class="align-vertically" th:text=${imovel.descricao}></td>
+            <td class="align-vertically" th:text=${imovel.preco}></td>
+            <td class="align-vertically" th:text=${imovel.tipo.descricao}></td>
+            <td class="align-vertically"><span class="label label-success">Anúncio Ativo</span></td>
+            <td class="align-vertically">
+                <div class="btn-group" style="min-width: 140px;">
+                    <button type="button" class="btn btn-default btn-sm">Ver
+                        Informações</button>
+                    <button type="button"
+                        class="btn btn-default btn-sm dropdown-toggle"
+                        data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span> <span
+                            class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Alterar</a></li>
+                        <li><a th:onclick="deletar([[${imovel.id}]])">Excluir</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</body>
+</html>

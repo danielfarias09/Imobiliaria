@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout.html :: header">
+<meta charset="utf-8">
+</head>
+
+    <div th:fragment="success-message" class="alert alert-success alert-dismissible fade show" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>        
+      </button>
+      <span th:text="${mensagem}"></span>
+    </div>
+    
+    <div th:fragment="error-message" th:if="${#fields.hasAnyErrors()}">
+        <div class="alert alert-danger" role="alert">
+            <div th:each="detailedError: ${#fields.detailedErrors()}" th:remove="tag">
+                <span th:text="${detailedError.message}" style="display:block"></span>
+            </div>
+        </div>
+    </div>
+    
+</html>

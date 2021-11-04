@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout.html :: header">
+<meta charset="utf-8">
+</head>
+<body>
+    <div class="container p-2">
+    
+        <h1>Cadastro de Imóvel</h1>
+    
+        <form method="POST" th:object=${imovel} th:action="@{/imoveis}">
+
+            <div th:insert="fragments/mensagem :: success-message" th:remove="tag"></div>
+
+            <div th:insert="fragments/mensagem :: error-message" th:remove="tag"></div>
+            
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group form-group-sm">
+                        <label for="descricao">Descrição do Imóvel</label> 
+                        <input type="text" th:field="*{descricao}"
+                            class="form-control" id="descricao"
+                            th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group form-group-sm">
+                        <label for="tipo">Tipo</label> 
+                        <select class="form-control" id="tipo"
+                            th:field="*{tipo}"
+                            th:classappend="${#fields.hasErrors('tipo')} ? has-error">
+                            <option
+                                th:each="tipoOpt : ${T(pt.com.example.thymeleafTest.model.TipoImovel).values()}"
+                                th:value="${tipoOpt}"
+                                th:text="${tipoOpt.descricao}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group form-group-sm">
+                        <label for="preco">Preço</label> 
+                        <input type="text" th:field="*{preco}" class="form-control"
+                            id="preco" th:classappend="${#fields.hasErrors('preco')} ? has-error">
+                    </div>
+                </div>               
+            </div>
+            
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
