@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" 
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:fragment="header">
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
     <link rel="stylesheet" th:href="@{/css/app-main.css}" />
@@ -24,10 +25,15 @@
                     <li class="nav-item"><a class="nav-link"
                         th:href="@{/imoveis/}">Lista de Imóveis</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link"
-                        th:href="@{/imoveis/dashboard/}">Dashboard</a>
-                    </li>
-                </ul>           
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a th:text=${principal.usuario.nome} href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/logout">sair</a></li>
+                  </ul>
+                </li>
+              </ul>           
             </div>
         </nav>
     </header>

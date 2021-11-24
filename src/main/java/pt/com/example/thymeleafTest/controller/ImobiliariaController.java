@@ -3,6 +3,7 @@ package pt.com.example.thymeleafTest.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -68,6 +69,7 @@ public class ImobiliariaController {
     }
     
     @PostMapping("/filtrar")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String filtrarImoveis(@ModelAttribute("filtro") FiltroDTO filtro, Model model) {
         model.addAttribute("imoveis", imovelService.filter(filtro));
         return "fragments/tabela-imoveis :: tabela-imoveis";  
